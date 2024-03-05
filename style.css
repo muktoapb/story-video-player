@@ -1,15 +1,37 @@
-#home-button,#video-container {
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Butterfly Kids", cursive;
+    font-weight: 400;
+}
+  
+#video-container #home-button,#video-container {
     display: none; /* Hide home button initially */
   }
 
+
+  .story_wrapper {
+    max-width: 800px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    justify-content: center;
+}
 div#first-screen {
     display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
 }
 
 div#first-screen button {
     background: no-repeat;
     border: none;
     max-width: 100px;
+    cursor: pointer;
+    height: 300px;
 }
 
 div#first-screen button img {
@@ -17,3 +39,48 @@ div#first-screen button img {
     height: 100%;
     object-fit: cover;
 }
+ /* 2nd screen  */
+div#video-container {
+    width: 100%;
+    position: relative;
+}
+#video-container button[disabled]{
+    display: none;
+}
+#video-container button{
+    font-size: 30px;
+    border: 1px solid rgb(255, 119, 0);
+    background: rgb(255, 149, 0);
+    cursor: pointer;
+    font-weight: 700;
+    border-radius: 200px;
+    height:100px;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:#fff;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+#loading-text {
+    position: absolute; /* Position text over video */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);  /* Center text */
+    font-size: 1.2em; /* Adjust text size */
+    color: white;
+    opacity: 0.7; /* Set slight transparency */
+  }
+/* player  */
+#player{
+    width: 100%;
+    height: auto;
+}
+
+

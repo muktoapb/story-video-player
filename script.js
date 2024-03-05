@@ -4,6 +4,7 @@ const homeButton = document.getElementById('home-button');
 
 const firstScreen = document.getElementById('first-screen');
 const videoContainer = document.getElementById('video-container');
+const loadingText = document.getElementById('loading-text');
 
 const videos = {
 1: 'video/video-1.mp4',
@@ -11,6 +12,7 @@ const videos = {
   3: 'video/video-3.mp4',
   4: 'video/video-4.mp4',
   5: 'video/video-5.mp4',
+  'end': 'video/endingVideo.mp4'
 };
 
 const playVideo = (videoId) => {
@@ -29,9 +31,15 @@ buttons.forEach(button => {
   });
 });
 
+
+videoElement.addEventListener('loadedmetadata', () => {
+    loadingText.style.display = 'none'; // Hide loading text when video metadata is loaded
+  });
+  
+
 videoElement.addEventListener('ended', () => {
   if (videoElement.currentSrc.includes('endingVideo')) {
-    homeButton.style.display = 'block';
+    homeButton.style.display = 'flex';
   } else {
     nextButton.disabled = false;
   }
@@ -46,5 +54,6 @@ homeButton.addEventListener('click', () => {
   nextButton.disabled = true;
   homeButton.style.display = 'none';
   videoContainer.style.display = 'none'; // Hide video container on home
-  firstScreen.style.display = 'block'; // Show first screen on home
+  firstScreen.style.display = 'flex'; // Show first screen on home
+  loadingText.style.display = 'block'; // Show loading text again on home
 });
